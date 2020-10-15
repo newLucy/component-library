@@ -8,8 +8,11 @@
     </div>
 </template>
 <script>
+import emitter from '@/mixins/emitter.js'
 export default {
+  componentName: 'QInput',
   inheritAttrs: false, // 根节点默认会继承父组件中传入的属性，false表示不继承父组件的属性
+  mixins: [emitter],
   props: {
     value: {
       type: String,
@@ -22,7 +25,7 @@ export default {
   methods: {
     onInput (e) {
       this.$emit('input', e.target.value)
-      this.$parent.$emit('validate')
+      this.dispatch('QFormItem', 'validate')
     }
   }
 }

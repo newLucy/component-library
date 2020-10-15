@@ -28,9 +28,8 @@ export function create (component, props) {
   // return comp
 
   // 方法二：使用extend
-  component.$props = props
   let Profile = Vue.extend(component)
-  let vm = new Profile()
+  let vm = new Profile({propsData: props})
   vm.$mount()
   document.body.appendChild(vm.$el)
 

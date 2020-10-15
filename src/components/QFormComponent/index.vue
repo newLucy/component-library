@@ -48,7 +48,6 @@ export default {
             title: '警告',
             message: '表单验证不通过！'
           })
-          // alert('校验失败!')
         }
       })
     }

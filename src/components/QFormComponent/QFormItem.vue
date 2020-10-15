@@ -8,8 +8,11 @@
 
 <script>
 import Schema from 'async-validator'
+import emitter from '@/mixins/emitter'
 export default {
+  componentName: 'QFormItem',
   inject: ['form'],
+  mixins: [emitter],
   props: {
     label: {
       type: String,
@@ -23,6 +26,7 @@ export default {
     }
   },
   mounted () {
+    this.dispatch('QForm', 'form-item-add', this)
     this.$on('validate', () => {
       this.validate()
     })
@@ -37,7 +41,7 @@ export default {
         validator.validate({[this.prop]: value}, (errors) => {
           if (errors) {
             this.error = errors[0].message
-            reject(new Error('校验失败'))
+            reject()
           } else {
             this.error = ''
             resolve()

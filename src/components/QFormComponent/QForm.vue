@@ -1,11 +1,12 @@
 <template>
-	<div>
-		<slot></slot>
-	</div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
 export default {
+  componentName: 'QForm',
   // 跨级传值
   provide () {
     return {
@@ -25,14 +26,24 @@ export default {
       error: 'error'
     }
   },
+  created () {
+    this.fields = []
+    this.$on('form-item-add', field => {
+      this.fields.push(field)
+    })
+  },
   methods: {
     validate (cb) {
-      let validateArr = this.$children
+      let validateArr = this.fields
         .filter((item) => item.prop)
         .map((item) => item.validate())
       Promise.all(validateArr)
-        .then(() => cb(true))
-        .catch(() => cb(false))
+        .then(() => {
+          cb(true)
+        })
+        .catch(() => {
+          cb(false)
+        })
     }
   }
 }
