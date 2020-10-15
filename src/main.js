@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { create } from './utils/create.js'
+import Notice from './utils/create-notice.js'
 
+Notice.install()
 Vue.config.productionTip = false
-Vue.prototype.$create = create
+// Vue.prototype.$create = create
 
 /* eslint-disable no-new */
 new Vue({

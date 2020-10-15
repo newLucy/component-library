@@ -26,7 +26,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
     setTimeout(() => {
       this.remove()
     }, this.duration)

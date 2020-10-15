@@ -18,13 +18,11 @@
 import QForm from './QForm'
 import QFormItem from './QFormItem'
 import QInput from './QInput'
-import Notice from '../BaseComponents/Notice'
 export default {
   components: {
     QForm,
     QFormItem,
-    QInput,
-    Notice
+    QInput
   },
   data () {
     return {
@@ -44,7 +42,7 @@ export default {
         if (valid) {
 
         } else {
-          this.$create(Notice, {
+          this.$notice({
             title: '警告',
             message: '表单验证不通过！'
           })

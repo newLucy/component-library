@@ -1,9 +1,10 @@
 import Vue from 'vue'
-
+import Notice from '@/components/BaseComponents/Notice.vue'
+console.log(Notice)
 // 动态生成组件实例，并挂载到body上
 // component: 组件配置对象
 // props: 组件属性
-export function create (component, props) {
+function create (component, props) {
   // 方法一：使用render
   // const vm = new Vue({
   //   render (h) {
@@ -37,5 +38,13 @@ export function create (component, props) {
   vm.remove = () => {
     document.body.removeChild(vm.$el)
     vm.$destroy()
+  }
+}
+
+export default {
+  install () {
+    Vue.prototype.$notice = function (options) {
+      create(Notice, options)
+    }
   }
 }
