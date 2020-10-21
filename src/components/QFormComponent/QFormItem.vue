@@ -41,7 +41,7 @@ export default {
         validator.validate({[this.prop]: value}, (errors) => {
           if (errors) {
             this.error = errors[0].message
-            reject()
+            reject(new Error())
           } else {
             this.error = ''
             resolve()

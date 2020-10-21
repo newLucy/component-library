@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import Notice from './utils/create-notice.js'
 
-Notice.install()
+Vue.use(Notice)
 Vue.config.productionTip = false
 // Vue.prototype.$create = create
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import LineChart from '@/components/QFormComponent/index'
+import QTree from '@/components/QTreeComponent/index'
 
 Vue.use(Router)
 
@@ -8,8 +8,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'LineChart',
-      component: LineChart
+      name: 'QTree',
+      component: QTree
     }
   ]
 })
