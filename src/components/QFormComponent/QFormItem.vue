@@ -2,7 +2,7 @@
   <div>
     <label v-if="label">{{label}}</label>
     <slot name="default"></slot>
-    <div v-if="error">{{error}}</div>
+    <div v-if="error" class="error">{{error}}</div>
   </div>
 </template>
 
@@ -52,3 +52,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+</style>

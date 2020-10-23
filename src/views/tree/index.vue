@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import QTree from './QTree'
+import QTree from '@/components/QTreeComponent/QTree'
 export default {
   components: {
     QTree

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <qrouter-link to="/tree">tree</qrouter-link>
+    <qrouter-link to="/form">form</qrouter-link>
+    <qrouter-link to="/vuex">vuex</qrouter-link>
+    <qrouter-view/>
   </div>
 </template>
 

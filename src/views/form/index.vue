@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import QForm from './QForm'
-import QFormItem from './QFormItem'
-import QInput from './QInput'
+import QForm from '@/components/QFormComponent/QForm'
+import QFormItem from '@/components/QFormComponent/QFormItem'
+import QInput from '@/components/QFormComponent/QInput'
 export default {
   components: {
     QForm,
@@ -40,7 +40,10 @@ export default {
     onLogin () {
       this.$refs['q-form'].validate((valid) => {
         if (valid) {
-
+          this.$notice({
+            title: '成功',
+            message: '提交成功！'
+          })
         } else {
           this.$notice({
             title: '警告',
