@@ -5,18 +5,41 @@ import QrouterLink from './qrouter-link'
 let Vue
 class QVueRouter {
   constructor (options) {
-    const initial = window.location.hash.slice('1') || '/'
-    Vue.util.defineReactive(this, 'current', initial)
     this.$options = options
-    this.routeMap = {}
-    options.routes.forEach(item => {
-      this.routeMap[item.path] = item
-    })
+    this.current = window.location.hash.slice('1') || '/'
+    // Vue.util.defineReactive(this, 'current', initial)
+    // this.routeMap = {}
+    // options.routes.forEach(item => {
+    //   this.routeMap[item.path] = item
+    // })
+    this.matched = []
     window.addEventListener('hashchange', this.handleHashChange.bind(this))
     window.addEventListener('load', this.handleHashChange.bind(this))
+    this.getMatched()
+    console.log(this.matched)
   }
   handleHashChange () {
     this.current = window.location.hash.slice(1)
+    this.matched = []
+    this.getMatched()
+    console.log(this.matched)
+  }
+
+  getMatched (routes) {
+    let route = routes || this.$options.routes
+    route.forEach(item => {
+      console.log(this.current)
+      if (item.path === '/' && this.current === '/') {
+        this.matched.push(route)
+        return
+      }
+      if (this.current.indexOf(item.path) > -1) {
+        this.matched.push(item)
+        if (item.children && item.children.length > 0) {
+          this.getMatched(item.children)
+        }
+      }
+    })
   }
 }
 

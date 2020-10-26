@@ -10,11 +10,25 @@ class Store {
     })
     this._mutations = options.mutations
     this._actions = options.actions
+    this._getters = options.getters
+    this.getters = {}
     console.log(options, this)
 
     // this.getters = (function () {
     //   return options.getters
     // }())
+    let store = this
+    let { commit, dispatch, localGetters } = store
+    this.commit = function boundCommit (type, payload) {
+      commit.call(store, type, payload)
+    }
+    this.dispatch = function boundDispatch (type, payload) {
+      dispatch.call(store, type, payload)
+    }
+    this.localGetters = function boundGetters (type, payload) {
+      localGetters.call(store, type, payload)
+    }
+    this.localGetters()
   }
 
   get state () {
@@ -40,6 +54,26 @@ class Store {
     }
     entry(this, payload)
   }
+  localGetters () {
+    for (const [key, item] of Object.entries(this._getters)) {
+      console.log(item, key)
+      const state = this.state
+      Object.defineProperty(this.getters, key, {
+        get: function () {
+          return item(state)
+        }
+      })
+      console.log(this.getters.doubleCount)
+    }
+  }
+  // getters (type, payload) {
+  //   let entry = this._getters[type]
+  //   if (!entry) {
+  //     console.error('未知dispatch参数名')
+  //     return
+  //   }
+  //   entry(this, payload)
+  // }
 }
 
 function install (_Vue) {

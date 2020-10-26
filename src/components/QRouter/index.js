@@ -21,7 +21,14 @@ export default new QRouter({
     {
       path: '/vuex',
       name: 'QVuex',
-      component: QVuex
+      component: QVuex,
+      children: [{
+        path: '/child1',
+        name: 'Child1',
+        component: {render (h) {
+          return h('h1', {}, ['路由嵌套'])
+        }}
+      }]
     }
   ]
 })

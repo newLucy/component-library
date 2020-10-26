@@ -1,22 +1,18 @@
 <template>
   <div>
     <p>值：{{this.$store.state.count}}</p>
-    <!-- <p>双倍值：{{doubleCount}}</p> -->
-    <button @click="handleAdd"></button>
+    <p>双倍值：{{$store.getters.doubleCount}}</p>
+    <button @click="$store.dispatch('add')">dispatch加1</button>
+    <button @click="$store.commit('add')">commit加1</button>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-    doubleCount () {
-      return this.$store.getters.doubleCount
-    }
-  },
-  methods: {
-    handleAdd () {
+  created () {
+    setTimeout(() => {
       this.$store.dispatch('add')
-    }
+    }, 1000)
   }
 }
 </script>
