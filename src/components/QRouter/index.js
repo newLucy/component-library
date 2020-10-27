@@ -3,6 +3,7 @@ import QRouter from './qvue-router'
 import QForm from '@/views/form/index'
 import QTree from '@/views/tree/index'
 import QVuex from '@/views/vuex/index'
+import QRouterComponent from '@/views/router/index'
 
 Vue.use(QRouter)
 
@@ -21,7 +22,12 @@ export default new QRouter({
     {
       path: '/vuex',
       name: 'QVuex',
-      component: QVuex,
+      component: QVuex
+    },
+    {
+      path: '/router',
+      name: 'QRouter',
+      component: QRouterComponent,
       children: [{
         path: '/child1',
         name: 'Child1',

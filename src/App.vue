@@ -3,6 +3,7 @@
     <qrouter-link to="/tree">tree</qrouter-link>
     <qrouter-link to="/form">form</qrouter-link>
     <qrouter-link to="/vuex">vuex</qrouter-link>
+    <qrouter-link to="/router">router</qrouter-link>
     <qrouter-view/>
   </div>
 </template>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Notice from '@/components/BaseComponents/Notice.vue'
-console.log(Notice)
 // 动态生成组件实例，并挂载到body上
 // component: 组件配置对象
 // props: 组件属性

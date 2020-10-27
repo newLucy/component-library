@@ -1,6 +1,10 @@
 let Vue
 class Store {
   constructor (options = {}) {
+    this._mutations = options.mutations
+    this._actions = options.actions
+    this._getters = options.getters
+    this.getters = {}
     this._vm = new Vue({
       data: {
         // $$表示不代理此变量，此变量为只读
@@ -8,11 +12,6 @@ class Store {
         $$state: options.state
       }
     })
-    this._mutations = options.mutations
-    this._actions = options.actions
-    this._getters = options.getters
-    this.getters = {}
-    console.log(options, this)
 
     // this.getters = (function () {
     //   return options.getters
@@ -55,25 +54,16 @@ class Store {
     entry(this, payload)
   }
   localGetters () {
+    // 方法一：
     for (const [key, item] of Object.entries(this._getters)) {
-      console.log(item, key)
       const state = this.state
       Object.defineProperty(this.getters, key, {
         get: function () {
           return item(state)
         }
       })
-      console.log(this.getters.doubleCount)
     }
   }
-  // getters (type, payload) {
-  //   let entry = this._getters[type]
-  //   if (!entry) {
-  //     console.error('未知dispatch参数名')
-  //     return
-  //   }
-  //   entry(this, payload)
-  // }
 }
 
 function install (_Vue) {

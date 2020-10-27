@@ -19,9 +19,6 @@ export default {
       default: ''
     }
   },
-  mounted () {
-    console.log(this)
-  },
   methods: {
     onInput (e) {
       this.$emit('input', e.target.value)
