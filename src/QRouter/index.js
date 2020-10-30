@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import QRouter from './qvue-router'
-import QForm from '@/views/form/index'
-import QTree from '@/views/tree/index'
-import QVuex from '@/views/vuex/index'
-import QRouterComponent from '@/views/router/index'
+import QForm from '@/views/form'
+import QTree from '@/views/tree'
+import QVuex from '@/views/vuex'
+import QRouterComponent from '@/views/router'
 
 Vue.use(QRouter)
 
